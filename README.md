@@ -29,7 +29,7 @@ The code generates three files per CPPN:
 3. A .txt file, containing the topology of the CPPN. The nomanclature utilised in the file is as follows:
    * Nodes refers to neurons.
    * Negative ids represent input neurons. In this approach -1, -2, -3 are the ids of the three input neurons.
-   * Ids 0 and 1 are for the output neurons.
+   * Ids 0 and 1 are related to the output neurons.
    * The rest of ids are associated to hidden neurons.
    * Connections show the id of the "origin" node and the id of "destination" node.
 
