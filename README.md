@@ -36,8 +36,6 @@ The code generates three files per CPPN:
 The output of the code is saved in a folder called "morphologies".
 
 > **Assumptions**
-
-* The number of morphologies (and consequently the CPPNs) generated is 35.
   
 * The specific parameters related to NEAT are taken from the configuration of previous reseearch and have not been modified.
 
