@@ -49,6 +49,8 @@ class MorphologyGenerator:
         updater = ConfigUpdater()
         updater.read(self.NEAT_CONFIGURATION_PATH)
 
+        updater["NEAT"]["pop_size"].value = parameters_data.get("number_of_cppns")
+
         if parameters_data.get("hidden_neurons") == 0:
 
             updater["DefaultGenome"]["initial_connection"].value = "full_direct"
