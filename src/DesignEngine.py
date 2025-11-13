@@ -4,6 +4,7 @@ from lxml import etree
 import pickle
 import numpy
 import neat
+import os
 
 
 # This class manipulates CPPNs and generates the files associated to them.
@@ -39,6 +40,8 @@ class DesignEngine:
         morphology_counter = 0
 
         for genome_id, genome in genomes:
+
+            os.makedirs(self.MORPHOLOGIES_PATH + str(morphology_counter), exist_ok=True)
 
             #For each CPPN, a file containing its topology is saved.
             with open(self.MORPHOLOGIES_PATH + str(morphology_counter) + "/neurons_and_connections.txt", "w") as file:
