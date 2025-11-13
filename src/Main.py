@@ -13,6 +13,8 @@ if __name__ == '__main__':
             "y":8,
             "z":10
         },
+        # Number of CPPNs (and morphologies) that will be generated.
+        "number_of_cppns": 3,
         # Number of hidden neurons of CPPNs. If 0, the input neurons will be connected to the output neurons. If >0, the
         # connections are randomised with 0.5 of probability to be enabled.
         "hidden_neurons": 2,
@@ -26,9 +28,3 @@ if __name__ == '__main__':
 
     mg = MorphologyGenerator(parameters_data)
     mg.generate_morphologies()
-
-
-
-
-
-
