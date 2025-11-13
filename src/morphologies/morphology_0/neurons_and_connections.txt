@@ -1,0 +1,19 @@
+Key: 2
+Fitness: None
+Nodes:
+	0 DefaultNodeGene(key=0, bias=-1.0846349017563661, response=1.0, activation=abs, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=0.8900661176370471, response=1.0, activation=clamped, aggregation=sum)
+	4 DefaultNodeGene(key=4, bias=-1.1007629521412494, response=1.0, activation=cube, aggregation=sum)
+	5 DefaultNodeGene(key=5, bias=1.667042089846011, response=1.0, activation=neg_abs, aggregation=sum)
+Connections:
+	DefaultConnectionGene(key=(-3, 0), weight=0.9406042301838197, enabled=True)
+	DefaultConnectionGene(key=(-3, 1), weight=0.12811770935232705, enabled=True)
+	DefaultConnectionGene(key=(-3, 4), weight=-1.2562155159131032, enabled=True)
+	DefaultConnectionGene(key=(-3, 5), weight=-1.0155359746136061, enabled=True)
+	DefaultConnectionGene(key=(-2, 0), weight=-1.1261672161314307, enabled=True)
+	DefaultConnectionGene(key=(-2, 4), weight=-1.153170097950719, enabled=True)
+	DefaultConnectionGene(key=(-2, 5), weight=0.7202131441655356, enabled=True)
+	DefaultConnectionGene(key=(-1, 4), weight=0.3840374352119266, enabled=True)
+	DefaultConnectionGene(key=(-1, 5), weight=-0.012998510375204778, enabled=True)
+	DefaultConnectionGene(key=(5, 0), weight=1.829728634751344, enabled=True)
+4 nodes with 10 connections.
