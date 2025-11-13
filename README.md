@@ -24,7 +24,7 @@ The code generates three files per CPPN:
 
 1. A .pickle file containing the serialised CPPN object.
    
-2. A .vxa file, containing the morphology designed by the CPPN. The file has the format required by VoxCAD the visual version of Voxelyze for morphology visualisation.
+2. A .vxa file, containing the morphology designed by the CPPN. The file has the format required by VoxCAD, the visual version of Voxelyze for morphology visualisation.
    
 3. A .txt file, containing the topology of the CPPN. The nomanclature utilised in the file is as follows:
    * Nodes refers to neurons.
