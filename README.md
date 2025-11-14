@@ -47,5 +47,5 @@ The output of the code is saved in a folder called "morphologies".
   
 * More technical details (e.g., how to add custom activation functions to de dictionary) can be found as comments within the code.
   
-* The morphology_base.vxa file is used as template to write the morphology files. Don't delete or modify it! 
+* The morphology_base.vxa file is used as template to write the files of the generated morphologies. Don't delete or modify it! 
 
