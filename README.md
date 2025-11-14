@@ -31,7 +31,7 @@ The code generates three files per CPPN:
    * Negative ids represent input neurons. In this approach -1, -2, -3 are the ids of the three input neurons.
    * Ids 0 and 1 are related to the output neurons.
    * The rest of ids are associated to hidden neurons.
-   * Connections show the id of the "origin" node and the id of "destination" node.
+   * The connections show the id of the "origin" node and the id of "destination" node.
 
 The output of the code is saved in a folder called "morphologies".
 
