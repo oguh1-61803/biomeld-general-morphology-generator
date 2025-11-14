@@ -29,7 +29,8 @@ class MorphologyGenerator:
         # These lines add activation functions that are not built-in in the neat-python library. The activation
         # functions are contained in the activation function bank. To add one, it is compulsory to define it in the
         # ActivationFunctionBank.py file. Then, add it in the configuration. The following lines are examples of adding
-        # custom activation functions to the activation function dictionary.
+        # custom activation functions to the activation function dictionary. The full list of built-in activation 
+        # functions (excluding neg_abs, neg_square, sqrt_abs, neg_sqrt_abs, neg_sin) is in lines 23-25 of the Main.py file.
         configuration.genome_config.add_activation("neg_abs", self.activation_function_bank.negative_abs)
         configuration.genome_config.add_activation("neg_square", self.activation_function_bank.negative_square)
         configuration.genome_config.add_activation("sqrt_abs", self.activation_function_bank.square_abs)
