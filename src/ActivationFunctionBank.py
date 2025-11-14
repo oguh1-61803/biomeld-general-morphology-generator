@@ -1,7 +1,7 @@
 from scipy.special import erf
 import math
 
-# This class represent the dictionary of functions that are not built-in in neat-python library.
+# This class represents the dictionary of functions that are not built-in in neat-python library.
 class ActivationFunctionBank:
 
     def __init__(self):
