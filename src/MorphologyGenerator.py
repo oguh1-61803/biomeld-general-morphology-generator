@@ -1,16 +1,19 @@
-# All the requeried imports and libraries.
+# All the required imports and libraries.
 from src.ActivationFunctionBank import ActivationFunctionBank
 from src.DesignEngine import DesignEngine
+from src.coordinate_systems import select_coordinate_system_from_ontology
 from configupdater import ConfigUpdater
+from src.function_selection import generate_function_report
+import json
 import neat
 
 
 # This class orchestrates the generation of morphologies.
 class MorphologyGenerator:
 
-    NEAT_CONFIGURATION_PATH = "NEAT.cfg"
+    NEAT_CONFIGURATION_PATH = "src/NEAT.cfg"
     # Since no evolutionary process is implied, the number of generations is 1.
-    NUMBER_OF_GENERATIONS = 1
+    NUMBER_OF_GENERATIONS = 30
 
     def __init__(self, parameters_data):
 
@@ -19,6 +22,49 @@ class MorphologyGenerator:
 
         self.__configure_file(parameters_data)
         self.__configure_cppn_design_engine(parameters_data)
+
+    def GetTestCase(self, _data, _softbot_type): 
+        for each_case in _data['test_cases']: 
+            if (each_case['name'] == _softbot_type): 
+                return each_case
+
+        return _data['test_cases'][0]
+
+    def select_active_functions(self, _file_name, _softbot_type, _algorithm_type): 
+        print(f"[MorphologyGenerator] Selecting activation functions...")
+        
+        with open(_file_name, 'r') as f:
+            data = json.load(f)
+
+        example_instance = self.GetTestCase(data, _softbot_type)
+        report = generate_function_report(example_instance)
+        new_act_func = report['recommendations'][_algorithm_type]
+
+        print(f"[MorphologyGenerator] Recommended functions: {new_act_func}")
+
+        updater = ConfigUpdater()
+        updater.read(self.NEAT_CONFIGURATION_PATH)
+        
+        activation_function_dictionary = ""
+        for function in new_act_func:
+            activation_function_dictionary += function + " "
+
+        activation_function_dictionary = activation_function_dictionary[:-1]
+        updater["DefaultGenome"]["activation_options"].value = activation_function_dictionary
+
+        updater.update_file()
+        
+        print(f"[MorphologyGenerator] Updated NEAT.cfg with functions: {activation_function_dictionary}")
+
+    def set_number_cppn(self, _num): 
+        updater = ConfigUpdater()
+        updater.read(self.NEAT_CONFIGURATION_PATH)
+        updater["NEAT"]["pop_size"].value = _num
+        updater.update_file()
+        
+        print(f"[MorphologyGenerator] Set population size to: {_num}")
+
+        return 0
 
     # This method triggers the process to generate morphologies.
     def generate_morphologies(self):
@@ -42,7 +88,16 @@ class MorphologyGenerator:
         stats = neat.StatisticsReporter()
         population.add_reporter(reporter)
         population.add_reporter(stats)
+        
+        print(f"[MorphologyGenerator] Starting morphology generation...")
+        print(f"[MorphologyGenerator] Population size: {configuration.pop_size}")
+        print(f"[MorphologyGenerator] Generations: {self.NUMBER_OF_GENERATIONS}")
+        
         population.run(self.cppn_design_engine.build_morphologies_using_cppns, self.NUMBER_OF_GENERATIONS)
+
+        #population.stats.best_genome()
+        
+        print(f"[MorphologyGenerator] Morphology generation complete!")
 
     # This auxiliar method updates the .cfg file required by the neat-python library to generate CPPNs.
     def __configure_file(self, parameters_data):
@@ -66,7 +121,7 @@ class MorphologyGenerator:
 
         else:
 
-            updater["DefaultGenome"]["initial_connection"].value =  "partial_direct 0.5"
+            updater["DefaultGenome"]["initial_connection"].value = "partial_direct 0.5"
 
             try:
 
@@ -89,5 +144,13 @@ class MorphologyGenerator:
 
     # This auxiliar method initialises the CPPN design engine.
     def __configure_cppn_design_engine(self, parameters_data):
+        
+        # NEW: Auto-select coordinate system if not specified
+        if 'coordinate_system' not in parameters_data:
+            coord_system = select_coordinate_system_from_ontology(parameters_data)
+            parameters_data['coordinate_system'] = coord_system
+            print(f"[MorphologyGenerator] Auto-selected coordinate system: {coord_system}")
+        else:
+            print(f"[MorphologyGenerator] Using specified coordinate system: {parameters_data['coordinate_system']}")
 
         self.cppn_design_engine = DesignEngine(parameters_data)

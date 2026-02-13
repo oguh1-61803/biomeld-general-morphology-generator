@@ -1,0 +1,681 @@
+{
+  "test_cases": [
+
+
+
+
+    {
+      "case_id": "TC001",
+      "name": "cylinder",
+      "description": "Elongated cylinder with circular cross-section and axial symmetry",
+      "problem_class": "navigation",
+      "geometric": {
+        "coordinate_system": "cylindrical",
+        "aspect_ratio": 10,
+        "radial_symmetry_score": [0.85, 1.0],
+        "bilateral_symmetry_score": [0.0, 0.3],
+        "solidity_ratio": [0.6, 0.9],
+        "feature_count": 1
+      },
+      "expected_key_functions": ["identity","sine", "negative_sine", "sigmoid" ],
+      "function_weights":
+      {"identity": 1.0, "sin": 0.9, "neg_sin": 0.85, "sigmoid": 0.8, "tanh": 0.7, "gauss": 0.6, "'sqrt_abs'": 0.3, "exponential": 0.3, "square": 0.2, "abs": 0.2, "neg_abs": 0.2, "hat": 0.1, "relu": 0.1, "step": 0.1, "clamped": 0.1, "negative_square": 0.0, "'sqrt_abs'": 0.0, "negative_'sqrt_abs'": 0.0, "SeLU": 0.0, "LeLU": 0.0, "eLU": 0.0, "softplus": 0.0, "cubical": 0.0, "inverse": 0.0, "logarithmic": 0.0
+    }
+    },
+
+
+    {
+      "case_id": "TC002",
+      "name": "sphere",
+      "description": "Isotropic sphere with radial symmetry in all directions",
+      "geometric": {
+        "coordinate_system": "spherical",
+        "aspect_ratio": 1.0,
+        "radial_symmetry_score": [0.9, 1.0],
+        "bilateral_symmetry_score": [0.0, 0.3],
+        "solidity_ratio": [0.7, 1.0],
+        "feature_count": 1
+      },
+      "expected_key_functions": ["gauss","sin", "neg_sin", "sigmoid" ],
+      "function_weights":
+      {"gauss": 1.0, "sin": 0.9, "neg_sin": 0.85, "sigmoid": 0.8, "tanh": 0.7, "sqrt_abs": 0.6, "exponential": 0.5, "softplus": 0.3, "identity": 0.2, "square": 0.1, "hat": 0.1, "abs": 0.1, "relu": 0.1, "step": 0.1, "clamped": 0.1, "negative_square": 0.0, "neg_abs": 0.0, "negative_'sqrt_abs'": 0.0, "SeLU": 0.0, "LeLU": 0.0, "eLU": 0.0, "cubical": 0.0, "inverse": 0.0, "logarithmic": 0.0
+      }
+    },
+  
+    {
+      "case_id": "TC003",
+      "name": "torus",
+      "description": "Ring structure with circular tube cross-section (donut shape)",
+      "geometric": {    
+        "coordinate_system": "cartesian",
+        "aspect_ratio": 1.0,
+        "radial_symmetry_score": [0.8, 1.0],
+        "bilateral_symmetry_score": [0.0, 0.3],
+        "solidity_ratio": [0.3, 0.6],
+        "feature_count": 1
+    },
+    "expected_key_functions": ["sin","neg_sin", "gauss", "sigmoid" ],
+    "function_weights":
+     {"sin": 1.0, "neg_sin": 0.95, "gauss": 0.9, "sigmoid": 0.8, "tanh": 0.7, "sqrt_abs": 0.6, "exponential": 0.5, "softplus": 0.3, "identity": 0.2, "square": 0.1, "hat": 0.1, "abs": 0.1, "relu": 0.1, "negative_square": 0.0, "neg_abs": 0.0, "negative_sqrt_abs": 0.0, "SeLU": 0.0, "LeLU": 0.0, "eLU": 0.0, "step": 0.0, "clamped": 0.0, "cubical": 0.0, "inverse": 0.0, "logarithmic": 0.0
+     }
+   },
+
+    {
+      "case_id": "TC004",
+      "name": "cube",
+      "description": "Cube with sharp boundaries, orthogonal faces, and right-angle edges",
+      "geometric": {
+    
+        "coordinate_system": "cartesian",
+        "aspect_ratio": 1.0,        
+        "radial_symmetry_score": [0.0, 0.2],
+        "bilateral_symmetry_score": [0.8, 1.0],
+        "solidity_ratio": [0.8, 1.0],
+        "feature_count": 1
+      },
+      "expected_key_functions": ["square","abs", "relu", "neg_abs" ],
+      "function_weights":
+      {"square": 1.0, "abs": 0.95, "relu": 0.9, "neg_abs": 0.85, "clamped": 0.7, "sqrt_abs": 0.6, "negative_sqrt_abs": 0.55, "step": 0.6, "hat": 0.5, "identity": 0.3, "SeLU": 0.3, "LeLU": 0.3, "eLU": 0.3, "gauss": 0.2, "sigmoid": 0.2, "tanh": 0.2, "sin": 0.1, "neg_sin": 0.1, "exponential": 0.1, "softplus": 0.1, "negative_square": 0.0, "cubical": 0.0, "inverse": 0.0, "logarithmic": 0.0
+    }
+  },
+
+    {
+      "case_id": "TC005",
+      "name": "ellipsoid",
+      "description": "Anisotropic ellipsoid with smooth surface and axis-dependent scaling",
+      "geometric": {
+    
+        "coordinate_system": "cartesian",
+        "aspect_ratio": 2.5,
+        "radial_symmetry_score": [0.3, 0.6],
+        "bilateral_symmetry_score": [0.7, 1.0],
+        "solidity_ratio": [0.7, 1.0],
+        "feature_count": 1
+    },
+    "expected_key_functions": ["gauss","sigmoid", "tanh", "identity" ],
+    "function_weights":
+      {"gauss": 1.0, "sigmoid": 0.9, "tanh": 0.85, "identity": 0.8, "sqrt_abs": 0.7, "sin": 0.6, "neg_sin": 0.55, "exponential": 0.5, "softplus": 0.5, "abs": 0.3, "square": 0.2, "relu": 0.2, "hat": 0.1, "step": 0.1, "clamped": 0.1, "negative_square": 0.0, "neg_abs": 0.0, "negative_sqrt_abs": 0.0, "SeLU": 0.0, "LeLU": 0.0, "eLU": 0.0, "cubical": 0.0, "inverse": 0.0, "logarithmic": 0.0
+    }
+  },
+
+
+
+
+    {
+      "case_id": "TC01",
+      "name": "blood_vessel_catheter",
+      "description": "Elongated catheter for navigating blood vessels, delivering drugs",
+      "problem_class": "navigation",
+      "geometric": {
+        "max_length": {
+          "value": 60,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 3,
+          "unit": "mm"
+        },
+        "symmetry_type": "bilateral",
+        "symmetry_axes": [
+          "x"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "hollowness_type": "hollow",
+        "has_internal_channels": true,
+        "channel_count": 1,
+        "surface_type": "smooth",
+        "aspect_ratio": 20,
+        "base_morphology": "elongated_cylinder"
+      },
+      "functional": {
+        "primary_function": "navigation",
+        "locomotion_type": "passive",
+        "confined_tubular": true,
+        "confinement_diameter": {
+          "value": 5,
+          "unit": "mm"
+        },
+        "tube_wall_compliance": "compliant",
+        "branching_structure": "simple_bifurcations"
+      },
+      "expected_key_functions": [
+        "abs",
+        "sigmoid",
+        "identity",
+        "neg_abs",
+        "tanh"
+      ],
+      "rationale": "Bilateral symmetry + hollow core + smooth gradients for confined navigation"
+    },
+    {
+      "case_id": "TC02",
+      "name": "jellyfish_swimmer",
+      "description": "Radially symmetric jellyfish-like swimmer with pulsatile propulsion",
+      "problem_class": "swimming",
+      "geometric": {
+        "max_length": {
+          "value": 25,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 20,
+          "unit": "mm"
+        },
+        "symmetry_type": "radial",
+        "symmetry_axes": [
+          "z"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "hollowness_type": "solid",
+        "has_internal_channels": false,
+        "surface_type": "smooth",
+        "aspect_ratio": 1.25,
+        "base_morphology": "sphere"
+      },
+      "functional": {
+        "primary_function": "swimming",
+        "locomotion_type": "jet_propulsion",
+        "confined_tubular": false,
+        "actuation_pattern": "synchronous",
+        "actuation_frequency": {
+          "value": 1.5,
+          "unit": "Hz"
+        },
+        "environment": "open_water"
+      },
+      "expected_key_functions": [
+        "sine",
+        "negative_sine",
+        "gaussian",
+        "sigmoid",
+        "abs"
+      ],
+      "rationale": "Radial symmetry + pulsatile actuation + bell-shaped morphology"
+    },
+    {
+      "case_id": "TC03",
+      "name": "intestinal_crawler",
+      "description": "Segmented worm-like crawler for intestinal navigation using peristaltic motion",
+      "problem_class": "crawling",
+      "geometric": {
+        "max_length": {
+          "value": 40,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 8,
+          "unit": "mm"
+        },
+        "symmetry_type": "radial",
+        "symmetry_axes": [
+          "z"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": true,
+        "segment_count": 8,
+        "segment_uniformity": "identical",
+        "hollowness_type": "solid",
+        "surface_type": "ribbed",
+        "aspect_ratio": 5,
+        "base_morphology": "segmented"
+      },
+      "functional": {
+        "primary_function": "crawling",
+        "locomotion_type": "peristaltic",
+        "confined_tubular": true,
+        "confinement_diameter": {
+          "value": 12,
+          "unit": "mm"
+        },
+        "actuation_pattern": "sequential_wave",
+        "surface_interaction_mode": "friction_based"
+      },
+      "expected_key_functions": [
+        "sine",
+        "negative_sine",
+        "square",
+        "sigmoid",
+        "hat"
+      ],
+      "rationale": "Segmentation + peristaltic waves + sequential actuation"
+    },
+    {
+      "case_id": "TC04",
+      "name": "micro_gripper",
+      "description": "Radial micro-gripper with 4 fingers for manipulating small objects",
+      "problem_class": "grasping",
+      "geometric": {
+        "max_length": {
+          "value": 5,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 4,
+          "unit": "mm"
+        },
+        "symmetry_type": "radial",
+        "symmetry_axes": [
+          "z"
+        ],
+        "connectivity_type": "branched",
+        "is_segmented": false,
+        "hollowness_type": "solid",
+        "surface_type": "with_appendages",
+        "appendage_count": 4,
+        "aspect_ratio": 1.25,
+        "base_morphology": "branched"
+      },
+      "functional": {
+        "primary_function": "grasping",
+        "manipulation_type": "pinch",
+        "grip_force": {
+          "value": 0.5,
+          "unit": "mN"
+        },
+        "actuation_pattern": "synchronous",
+        "target_object_size": {
+          "value": 1.5,
+          "unit": "mm"
+        }
+      },
+      "expected_key_functions": [
+        "gaussian",
+        "relu",
+        "abs",
+        "hat",
+        "exponential"
+      ],
+      "rationale": "Discrete branches + radial symmetry + localized actuators at fingers"
+    },
+    {
+      "case_id": "TC05",
+      "name": "ring_squeezer",
+      "description": "Ring-shaped device that encircles pillars and squeezes them together",
+      "problem_class": "grasping",
+      "geometric": {
+        "max_length": {
+          "value": 15,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 15,
+          "unit": "mm"
+        },
+        "symmetry_type": "radial",
+        "symmetry_axes": [
+          "z"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "hollowness_type": "hollow",
+        "has_internal_channels": false,
+        "topology_genus": 1,
+        "surface_type": "smooth",
+        "aspect_ratio": 1.0,
+        "base_morphology": "sphere"
+      },
+      "functional": {
+        "primary_function": "grasping",
+        "manipulation_type": "squeeze",
+        "grip_force": {
+          "value": 5,
+          "unit": "mN"
+        },
+        "actuation_pattern": "synchronous",
+        "target_interaction_mode": "compress_multiple",
+        "force_direction": "radial_inward"
+      },
+      "expected_key_functions": [
+        "sine",
+        "negative_sine",
+        "gaussian",
+        "neg_abs",
+        "sigmoid"
+      ],
+      "rationale": "Radial symmetry + toroidal topology + uniform radial compression + hollow core"
+    },
+    {
+      "case_id": "TC06",
+      "name": "brain_ventricle_navigator",
+      "description": "Compact device for navigating brain ventricle system with complex branching",
+      "problem_class": "navigation",
+      "geometric": {
+        "max_length": {
+          "value": 12,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 2.5,
+          "unit": "mm"
+        },
+        "symmetry_type": "bilateral",
+        "symmetry_axes": [
+          "x"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "hollowness_type": "solid",
+        "surface_type": "smooth",
+        "aspect_ratio": 4.8,
+        "base_morphology": "elongated_cylinder"
+      },
+      "functional": {
+        "primary_function": "navigation",
+        "locomotion_type": "passive",
+        "confined_tubular": true,
+        "confinement_diameter": {
+          "value": 4,
+          "unit": "mm"
+        },
+        "branching_structure": "complex_network",
+        "branching_angle": {
+          "value": 60,
+          "unit": "degrees"
+        },
+        "tube_wall_compliance": "rigid"
+      },
+      "expected_key_functions": [
+        "abs",
+        "sigmoid",
+        "tanh",
+        "gaussian",
+        "identity"
+      ],
+      "rationale": "Bilateral symmetry + compact + smooth transitions for tight branching navigation"
+    },
+    {
+      "case_id": "TC07",
+      "name": "spider_crawler",
+      "description": "Multi-legged crawler with 8 legs for surface locomotion",
+      "problem_class": "crawling",
+      "geometric": {
+        "max_length": {
+          "value": 30,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 25,
+          "unit": "mm"
+        },
+        "symmetry_type": "radial",
+        "symmetry_axes": [
+          "z"
+        ],
+        "connectivity_type": "branched",
+        "is_segmented": false,
+        "hollowness_type": "solid",
+        "surface_type": "with_appendages",
+        "appendage_count": 8,
+        "has_repetitive_patterns": true,
+        "pattern_period": {
+          "value": 45,
+          "unit": "degrees"
+        },
+        "aspect_ratio": 1.2,
+        "base_morphology": "branched"
+      },
+      "functional": {
+        "primary_function": "crawling",
+        "locomotion_type": "walking",
+        "surface_interaction_mode": "point_contact",
+        "actuation_pattern": "sequential_alternating",
+        "confined_tubular": false
+      },
+      "expected_key_functions": [
+        "sine",
+        "negative_sine",
+        "gaussian",
+        "hat",
+        "relu",
+        "abs"
+      ],
+      "rationale": "Radial symmetry + periodic angular pattern + discrete legs + walking gait"
+    },
+    {
+      "case_id": "TC08",
+      "name": "asymmetric_sensor_probe",
+      "description": "Asymmetric probe with multiple discrete sensor nodes at specific locations",
+      "problem_class": "sensing",
+      "geometric": {
+        "max_length": {
+          "value": 20,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 3,
+          "unit": "mm"
+        },
+        "symmetry_type": "asymmetric",
+        "symmetry_axes": [],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "hollowness_type": "solid",
+        "surface_type": "with_appendages",
+        "appendage_count": 5,
+        "has_symmetry_breaking_features": true,
+        "aspect_ratio": 6.7,
+        "base_morphology": "elongated_cylinder"
+      },
+      "functional": {
+        "primary_function": "sensing",
+        "sensor_type": "temperature_pressure",
+        "sensor_count": 5,
+        "sensor_placement": "discrete_asymmetric",
+        "confined_tubular": false
+      },
+      "expected_key_functions": [
+        "gaussian",
+        "exponential",
+        "identity",
+        "relu",
+        "hat",
+        "sigmoid"
+      ],
+      "rationale": "Asymmetric + discrete localized features + no symmetry constraints"
+    },
+    {
+      "case_id": "TC09",
+      "name": "gradient_stiffness_catheter",
+      "description": "Catheter with smooth stiffness gradient from rigid base to flexible tip",
+      "problem_class": "navigation",
+      "geometric": {
+        "max_length": {
+          "value": 80,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 2.8,
+          "unit": "mm"
+        },
+        "symmetry_type": "bilateral",
+        "symmetry_axes": [
+          "x"
+        ],
+        "connectivity_type": "single_body",
+        "is_segmented": false,
+        "segment_uniformity": "gradient",
+        "hollowness_type": "hollow",
+        "has_internal_channels": true,
+        "surface_type": "smooth",
+        "aspect_ratio": 28.6,
+        "base_morphology": "elongated_cylinder"
+      },
+      "functional": {
+        "primary_function": "navigation",
+        "locomotion_type": "passive",
+        "confined_tubular": true,
+        "confinement_diameter": {
+          "value": 4,
+          "unit": "mm"
+        },
+        "requires_spatial_gradient": true,
+        "gradient_direction": "proximal_to_distal"
+      },
+      "expected_key_functions": [
+        "sigmoid",
+        "tanh",
+        "softplus",
+        "eLU",
+        "identity",
+        "abs"
+      ],
+      "rationale": "Smooth spatial gradient + bilateral + elongated + transitions"
+    },
+    {
+      "case_id": "TC10",
+      "name": "streamlined_swimmer",
+      "description": "Fish-like bilateral swimmer with streamlined body for efficient propulsion",
+      "problem_class": "swimming",
+      "geometric": {
+        "max_length": {
+          "value": 50,
+          "unit": "mm"
+        },
+        "max_diameter": {
+          "value": 12,
+          "unit": "mm"
+        },
+        "symmetry_type": "bilateral",
+        "symmetry_axes": [
+          "x",
+          "y"
+        ],
+        "connectivity_type": "articulated",
+        "is_segmented": true,
+        "segment_count": 5,
+        "segment_uniformity": "varied",
+        "hollowness_type": "solid",
+        "surface_type": "smooth",
+        "aspect_ratio": 4.2,
+        "base_morphology": "ellipsoid"
+      },
+      "functional": {
+        "primary_function": "swimming",
+        "locomotion_type": "undulatory",
+        "actuation_pattern": "sequential_wave",
+        "actuation_frequency": {
+          "value": 2,
+          "unit": "Hz"
+        },
+        "confined_tubular": false,
+        "environment": "open_water"
+      },
+      "expected_key_functions": [
+        "sine",
+        "negative_sine",
+        "sigmoid",
+        "tanh",
+        "abs",
+        "identity"
+      ],
+      "rationale": "Bilateral + undulatory + segmented + wave propagation + streamlined"
+    }
+  ],
+  "test_case_coverage": {
+    "primary_functions": {
+      "navigation": [
+        "TC01",
+        "TC06",
+        "TC09"
+      ],
+      "swimming": [
+        "TC02",
+        "TC10"
+      ],
+      "crawling": [
+        "TC03",
+        "TC07"
+      ],
+      "grasping": [
+        "TC04",
+        "TC05"
+      ],
+      "sensing": [
+        "TC08"
+      ]
+    },
+    "symmetry_types": {
+      "bilateral": [
+        "TC01",
+        "TC06",
+        "TC09",
+        "TC10"
+      ],
+      "radial": [
+        "TC02",
+        "TC03",
+        "TC04",
+        "TC05",
+        "TC07"
+      ],
+      "asymmetric": [
+        "TC08"
+      ]
+    },
+    "structural_features": {
+      "segmented": [
+        "TC03",
+        "TC10"
+      ],
+      "branched": [
+        "TC04",
+        "TC07"
+      ],
+      "hollow": [
+        "TC01",
+        "TC05",
+        "TC09"
+      ],
+      "appendages": [
+        "TC04",
+        "TC07",
+        "TC08"
+      ],
+      "gradient": [
+        "TC09"
+      ]
+    },
+    "aspect_ratios": {
+      "very_elongated": [
+        "TC01",
+        "TC09"
+      ],
+      "elongated": [
+        "TC03",
+        "TC06",
+        "TC08",
+        "TC10"
+      ],
+      "moderate": [
+        "TC02",
+        "TC04"
+      ],
+      "compact": [
+        "TC05",
+        "TC07"
+      ]
+    },
+    "special_features": {
+      "toroidal_topology": [
+        "TC05"
+      ],
+      "peristaltic": [
+        "TC03"
+      ],
+      "undulatory": [
+        "TC10"
+      ],
+      "discrete_localized": [
+        "TC04",
+        "TC08"
+      ]
+    }
+  },
+  "notes": {
+    "diversity": "10 test cases cover all major symmetry types, 5 problem classes, and key structural features",
+    "ring_squeezer": "TC05 uses 'grasping' with manipulation_type='squeeze' - consider ontology extension if more compression/force-application problems arise",
+    "validation_strategy": "Use TC01-TC05 for initial mapping development, TC06-TC10 for validation"
+  }
+}
